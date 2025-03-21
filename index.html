@@ -44,11 +44,11 @@
     </header>
 
     <!-- About Section -->
-    <section id="profile" class="section">
+    <section id="profile" class="section section-1">
         <div class="container" style="justify-content: center; align-items: center;">
             <h2>Tentang Saya</h2>
-            <p>Halo, saya Rendy Kamaluddin, seorang Full Stack Developer yang sedang menempuh semester 4 di Universitas Logistik dan Bisnis Internasional. Saya berasal dari Bandung dan memiliki minat besar dalam pengembangan aplikasi berbasis web serta teknologi terbaru di dunia programming.</p>
-            <a href="#contact" class="cta-button">Hubungi Saya</a>
+            <p>Halo, saya Rendy Kamaluddin, seorang Full Stack Developer yang sedang menempuh semester 4 di Universitas Logistik dan Bisnis Internasional. Saya berasal dari Bandung dan memiliki minat besar dalam pengembangan aplikasi berbasis web serta teknologi terbaru di dunia programming. <a href="#contact" style="text-decoration: none;">Hubungi Saya</a></p>
+            
         </div>
     </section>
 
@@ -141,6 +141,12 @@
                 </a>
             </div>
         </div>
+        <div class="section-a animation-section" id="animationSection">
+            <h1>Please Contact me</h1>
+            <div class="image-container">
+                <img src="pav.ico" alt="Animated Image" class="animated-image" id="animatedImage">
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -150,5 +156,39 @@
         </div>
     </footer>
     <script src="js.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedImage = document.getElementById('animatedImage');
+            const animationSection = document.getElementById('animationSection');
+            
+            let animationTriggered = false;
+            
+            // Fungsi untuk memeriksa apakah elemen terlihat pada viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                
+                // Element terlihat jika setengah bagiannya sudah terlihat di viewport
+                return (
+                    rect.top <= windowHeight / 1.5 &&
+                    rect.bottom >= windowHeight / 2
+                );
+            }
+            
+            // Fungsi untuk memeriksa scroll dan mengaktifkan animasi
+            function checkScroll() {
+                if (!animationTriggered && isElementInViewport(animationSection)) {
+                    animatedImage.classList.add('active');
+                    animationTriggered = true;
+                }
+            }
+            
+            // Tambahkan event listener untuk scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Periksa posisi awal scroll
+            checkScroll();
+        });
+    </script>
 </body>
 </html>
